@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <KFLoggingDocsFolderName Condition="'$(KFLoggingDocsFolderName)' == ''">KoreForge.Logging</KFLoggingDocsFolderName>
+    <_KFLoggingDocsSource>$(MSBuildThisFileDirectory)..\docs\</_KFLoggingDocsSource>
+    <_KFLoggingDocsDestination Condition="'$(SolutionDir)' != ''">$(SolutionDir)docs\$(KFLoggingDocsFolderName)\</_KFLoggingDocsDestination>
+    <_KFLoggingDocsDestination Condition="'$(SolutionDir)' == ''">$(MSBuildProjectDirectory)\docs\$(KFLoggingDocsFolderName)\</_KFLoggingDocsDestination>
+  </PropertyGroup>
+
+  <Target Name="KFLoggingCopyDocs"
+          BeforeTargets="BeforeBuild"
+          Condition="Exists('$(_KFLoggingDocsSource)') and '$(_KFLoggingDocsDestination)' != '' and '$(KFLoggingDocsCopied)' != 'true'">
+    <ItemGroup>
+      <_KFLoggingDocFiles Include="$(_KFLoggingDocsSource)**\*.*" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(_KFLoggingDocsDestination)" />
+
+    <Copy SourceFiles="@(_KFLoggingDocFiles)"
+          DestinationFiles="@(_KFLoggingDocFiles->'$(_KFLoggingDocsDestination)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+
+    <PropertyGroup>
+      <KFLoggingDocsCopied>true</KFLoggingDocsCopied>
+    </PropertyGroup>
+  </Target>
+</Project>

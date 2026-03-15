@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <Authors>KoreForge</Authors>
+    <Company>KoreForge</Company>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts\</PackageOutputPath>
+    <RepositoryUrl>https://github.com/koreforger/KoreForge.Logging</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/koreforger/KoreForge.Logging</PackageProjectUrl>
+
+    <MinVerTagPrefix>KoreForge.Logging/v</MinVerTagPrefix>
+    <MinVerAutoIncrement>minor</MinVerAutoIncrement>
+    <MinVerDefaultPreReleaseIdentifiers>alpha.0</MinVerDefaultPreReleaseIdentifiers>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MinVerVersion)' != ''">
+    <Version>$(MinVerVersion)</Version>
+    <PackageVersion>$(MinVerPackageVersion)</PackageVersion>
+    <AssemblyVersion>$(MinVerAssemblyVersion)</AssemblyVersion>
+    <FileVersion>$(MinVerFileVersion)</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" PrivateAssets="all" />
+  </ItemGroup>
+</Project>
