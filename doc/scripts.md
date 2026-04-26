@@ -8,7 +8,7 @@ Automation lives in the `scripts/` directory and wraps the most common repositor
 | `test.ps1` | `-Configuration Debug|Release` (default `Debug`) | Executes `dotnet test` with coverage disabled for faster inner-loop runs. |
 | `test-with-coverage.ps1` | `-Configuration Debug|Release` (default `Debug`) | Executes `dotnet test` with Coverlet + ReportGenerator enabled. HTML output: `TestResults/<project>/coverage-html/index.html`. |
 | `pack.ps1` | `-Configuration Debug|Release` (default `Release`) | Produces `.nupkg` and `.snupkg` in `artifacts/` via `dotnet pack`. |
-| `clean.ps1` | *(none)* | Deletes `bin/`, `obj/`, `artifacts/`, and `TestResults/` to reset the repo. |
+| `clean.ps1` | *(none)* | Deletes `scr/`, `obj/`, `artifacts/`, and `TestResults/` to reset the repo. |
 | `publish.ps1` | `-ApiKey <token>` (required), `-Source <url>` (default NuGet), `-Configuration Debug|Release`, `-SkipPack` | Packs (unless `-SkipPack`), then pushes both `.nupkg` and `.snupkg` to the specified NuGet feed using `dotnet nuget push --skip-duplicate`. |
 
 ## Usage Tips

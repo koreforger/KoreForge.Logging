@@ -24,7 +24,7 @@ The `KoreForge.Logging.Runtime` package references the generator and analyzer pr
 - **Build**: `dotnet build KoreForge.Logging.sln`
 - **Test**: `dotnet test` (coverage + HTML report emitted to `TestResults/KoreForge.Logging.Tests/coverage-html/index.html`)
 - **Pack**: `dotnet pack -c Release` (packages land in `artifacts/`)
-- **Clean**: `scripts/clean.ps1` removes `bin/`, `obj/`, `artifacts/`, `TestResults/`
+- **Clean**: `scripts/clean.ps1` removes `scr/`, `obj/`, `artifacts/`, `TestResults/`
 
 Automation scripts live under `scripts/` and simply wrap the commands above so CI or local contributors can stay consistent:
 
