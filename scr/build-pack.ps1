@@ -5,7 +5,7 @@ param(
 
 Push-Location (Resolve-Path "$PSScriptRoot\..")
 try {
-    dotnet pack KoreForge.Logging.sln -c $Configuration
+    dotnet pack KoreForge.Logging.slnx -c $Configuration
     Write-Host 'Packages written to artifacts/.' -ForegroundColor Green
 } finally {
     Pop-Location

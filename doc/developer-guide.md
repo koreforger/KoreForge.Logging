@@ -5,7 +5,7 @@ This document explains how the solution is structured, how it is built and teste
 ## Solution Layout
 
 ```
-KoreForge.Logging.sln
+KoreForge.Logging.slnx
 ├─ src/
 │  ├─ KoreForge.Logging.Runtime/           # Public runtime assembly + packaged analyzers/generator
 │  ├─ KoreForge.Logging.Generator/         # Incremental source generator (netstandard2.0)
@@ -21,7 +21,7 @@ The `KoreForge.Logging.Runtime` package references the generator and analyzer pr
 
 ## Build & Test Overview
 
-- **Build**: `dotnet build KoreForge.Logging.sln`
+- **Build**: `dotnet build KoreForge.Logging.slnx`
 - **Test**: `dotnet test` (coverage + HTML report emitted to `TestResults/KoreForge.Logging.Tests/coverage-html/index.html`)
 - **Pack**: `dotnet pack -c Release` (packages land in `artifacts/`)
 - **Clean**: `scripts/clean.ps1` removes `scr/`, `obj/`, `artifacts/`, `TestResults/`
