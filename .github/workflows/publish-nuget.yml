@@ -26,10 +26,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Build
-        run: dotnet build KoreForge.Logging.sln -c Release
+        run: dotnet build KoreForge.Logging.slnx -c Release
 
       - name: Test
-        run: dotnet test KoreForge.Logging.sln -c Release --no-build
+        run: dotnet test KoreForge.Logging.slnx -c Release --no-build
 
       - name: Pack
         run: dotnet pack src/KF.Logging.Runtime/KF.Logging.Runtime.csproj -c Release --no-build -o artifacts/
