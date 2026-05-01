@@ -25,14 +25,8 @@
 
   <!-- Analyzer project references for build-time code generation -->
   <ItemGroup>
-    <ProjectReference Include="..\KF.Logging.Generator\KF.Logging.Generator.csproj"
-                      ReferenceOutputAssembly="false"
-                      OutputItemType="Analyzer"
-                      PrivateAssets="all" />
-    <ProjectReference Include="..\KF.Logging.Analyzers\KF.Logging.Analyzers.csproj"
-                      ReferenceOutputAssembly="false"
-                      OutputItemType="Analyzer"
-                      PrivateAssets="all" />
+    <PackageReference Include="KF.Logging.Generator" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <PackageReference Include="KF.Logging.Analyzers" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- Bundle analyzer/generator DLLs into the package.

@@ -30,9 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KF.Logging.Analyzers\KF.Logging.Analyzers.csproj" />
-    <ProjectReference Include="..\..\src\KF.Logging.Generator\KF.Logging.Generator.csproj" />
-    <ProjectReference Include="..\..\src\KF.Logging.Runtime\KF.Logging.Runtime.csproj" />
+    <PackageReference Include="KF.Logging.Analyzers" VersionOverride="1.0.1-alpha" />
+    <PackageReference Include="KF.Logging.Generator" VersionOverride="1.0.1-alpha" />
+    <PackageReference Include="KoreForge.Logging" VersionOverride="1.0.1-alpha" />
   </ItemGroup>
 
 </Project>
