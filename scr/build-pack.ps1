@@ -1,12 +1,10 @@
 [CmdletBinding()]
 param(
-    [string]$Configuration = 'Release'
+    [ValidateSet('Debug', 'Release')]
+    [string]$Configuration = 'Release',
+    [string]$Version
 )
 
-Push-Location (Resolve-Path "$PSScriptRoot\..")
-try {
-    dotnet pack KoreForge.Logging.slnx -c $Configuration
-    Write-Host 'Packages written to artifacts/.' -ForegroundColor Green
-} finally {
-    Pop-Location
-}
+Import-Module (Join-Path $PSScriptRoot 'koreforge-build.psm1') -Force -DisableNameChecking
+Invoke-KfPack -Configuration $Configuration -Version $Version
+

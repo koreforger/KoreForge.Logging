@@ -1,6 +1,6 @@
 # Scripts Reference
 
-Automation lives in the `scripts/` directory and wraps the most common repository tasks so contributors and CI jobs use identical commands. Every script enforces strict PowerShell behavior (`Set-StrictMode -Version Latest`, `$ErrorActionPreference = 'Stop'`) and executes from the repository root.
+Automation lives in the `scr/` directory and wraps the most common repository tasks so contributors and CI jobs use identical commands. Every script enforces strict PowerShell behavior (`Set-StrictMode -Version Latest`, `$ErrorActionPreference = 'Stop'`) and executes from the repository root.
 
 | Script | Arguments | Description |
 | --- | --- | --- |
@@ -16,3 +16,4 @@ Automation lives in the `scripts/` directory and wraps the most common repositor
 - Run scripts from any folder: each script resolves the repo root before executing.
 - Pass `-SkipPack` to `publish.ps1` when you already have packages in `artifacts/`.
 - Combine with PowerShell's `-Verbose` flag to trace the underlying `dotnet` invocations.
+

@@ -24,18 +24,18 @@ The `KoreForge.Logging.Runtime` package references the generator and analyzer pr
 - **Build**: `dotnet build KoreForge.Logging.slnx`
 - **Test**: `dotnet test` (coverage + HTML report emitted to `TestResults/KoreForge.Logging.Tests/coverage-html/index.html`)
 - **Pack**: `dotnet pack -c Release` (packages land in `artifacts/`)
-- **Clean**: `scripts/clean.ps1` removes `scr/`, `obj/`, `artifacts/`, `TestResults/`
+- **Clean**: `scr/build-clean.ps1` removes `scr/`, `obj/`, `artifacts/`, `TestResults/`
 
-Automation scripts live under `scripts/` and simply wrap the commands above so CI or local contributors can stay consistent:
+Automation scripts live under `scr/` and simply wrap the commands above so CI or local contributors can stay consistent:
 
 | Script | Purpose |
 | --- | --- |
-| `scripts/build.ps1 [-Configuration Debug|Release]` | Runs `dotnet build` with the chosen configuration. |
-| `scripts/test.ps1` | Executes tests without coverage (`CollectCoverage=false`) for quick inner-loop runs. |
-| `scripts/test-with-coverage.ps1` | Executes tests with Coverlet + ReportGenerator enabled. |
-| `scripts/pack.ps1` | Runs `dotnet pack` and drops `.nupkg/.snupkg` into `artifacts/`. |
-| `scripts/clean.ps1` | Deletes `bin`, `obj`, `artifacts`, and `TestResults`. |
-| `scripts/publish.ps1 -ApiKey ... [-Source ...]` | Packs (unless `-SkipPack`) and pushes both `.nupkg` and `.snupkg` to the configured feed. |
+| `scr/build-rebuild.ps1 [-Configuration Debug|Release]` | Runs `dotnet build` with the chosen configuration. |
+| `scr/build-test.ps1` | Executes tests without coverage (`CollectCoverage=false`) for quick inner-loop runs. |
+| `scr/build-test-codecoverage.ps1` | Executes tests with Coverlet + ReportGenerator enabled. |
+| `scr/build-pack.ps1` | Runs `dotnet pack` and drops `.nupkg/.snupkg` into `artifacts/`. |
+| `scr/build-clean.ps1` | Deletes `bin`, `obj`, `artifacts`, and `TestResults`. |
+| `scr/release-nuget-from-local.ps1 -ApiKey ... [-Source ...]` | Packs (unless `-SkipPack`) and pushes both `.nupkg` and `.snupkg` to the configured feed. |
 
 MSBuild-wide settings live in `Directory.Build.props/targets`. Key points:
 
@@ -57,16 +57,16 @@ Keep `src/KoreForge.Logging.Analyzers/AnalyzerReleases/AnalyzerReleases.(Shipped
 ## Adding Features / Fixes
 
 1. Update or add tests under `tests/KoreForge.Logging.Tests`.
-2. Run `scripts/test.ps1` (or `scripts/test-with-coverage.ps1` if you want HTML output).
+2. Run `scr/build-test.ps1` (or `scr/build-test-codecoverage.ps1` if you want HTML output).
 3. Update docs (spec, user, developer guides) when behavior or requirements change.
 4. Bump tags per MinVer conventions before releasing.
 
 ## Release Checklist
 
-1. `scripts/clean.ps1`
-2. `scripts/test-with-coverage.ps1`
+1. `scr/build-clean.ps1`
+2. `scr/build-test-codecoverage.ps1`
 3. Inspect `TestResults/KoreForge.Logging.Tests/coverage-html/index.html`
-4. `scripts/pack.ps1`
+4. `scr/build-pack.ps1`
 5. Push artifacts from `artifacts/` to NuGet feed (or internal store)
 6. Tag commit `KoreForge.Logging/vX.Y.Z` so MinVer picks it up.
 
@@ -75,3 +75,4 @@ Keep `src/KoreForge.Logging.Analyzers/AnalyzerReleases/AnalyzerReleases.(Shipped
 - If coverage HTML fails to generate, verify `ReportGenerator` package restored and `dotnet exec` path points to `tools/net9.0/ReportGenerator.dll`.
 - If analyzer build errors about release tracking, edit the `.md` files instead of deleting them.
 - Auto-doc copy can be disabled or redirected via the `KFLoggingDocsFolderName` MSBuild property in consumer projects.
+

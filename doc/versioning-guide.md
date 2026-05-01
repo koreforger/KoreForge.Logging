@@ -16,14 +16,14 @@ Example release tag: `KoreForge.Logging/v1.4.0`
 
 ## Versioning Scripts
 
-This solution provides two scripts in the `scripts/` folder to manage versions:
+This solution provides two scripts in the `scr/` folder to manage versions:
 
 ### Get-Version.ps1
 
 Displays current version information:
 
 ```powershell
-.\scripts\Get-Version.ps1
+.\scr\Get-Version.ps1
 ```
 
 Output includes:
@@ -38,13 +38,13 @@ Creates release tags:
 
 ```powershell
 # Create a tag locally
-.\scripts\Tag-Release.ps1 -Version 1.2.0
+.\scr\Tag-Release.ps1 -Version 1.2.0
 
 # Create and push to origin
-.\scripts\Tag-Release.ps1 -Version 1.2.0 -Push
+.\scr\Tag-Release.ps1 -Version 1.2.0 -Push
 
 # Overwrite an existing tag
-.\scripts\Tag-Release.ps1 -Version 1.2.0 -Push -Force
+.\scr\Tag-Release.ps1 -Version 1.2.0 -Push -Force
 ```
 
 ## Semantic Versioning Rules
@@ -60,26 +60,26 @@ Creates release tags:
 
 1. Ensure the working tree is clean:
    ```powershell
-   .\scripts\Get-Version.ps1
+   .\scr\Get-Version.ps1
    ```
 
 2. Run all tests:
    ```powershell
-   .\scripts\Test.ps1
+   .\scr\build-test.ps1
    # or with coverage
-   .\scripts\Test-Coverage.ps1
+   .\scr\Test-Coverage.ps1
    ```
 
 3. Decide the new SemVer (MAJOR.MINOR.PATCH) according to the rules above.
 
 4. Create and push the release tag:
    ```powershell
-   .\scripts\Tag-Release.ps1 -Version 1.2.0 -Push
+   .\scr\Tag-Release.ps1 -Version 1.2.0 -Push
    ```
 
 5. Build and pack:
    ```powershell
-   .\scripts\Pack.ps1 -Configuration Release
+   .\scr\build-pack.ps1 -Configuration Release
    ```
 
 6. Verify the package version in the `artifacts/` folder matches your tag.
@@ -92,7 +92,7 @@ Creates release tags:
 - These builds are suitable for internal consumption, previews, or testing feeds but should not be published as official releases.
 - To publish a preview release, use a pre-release tag like `1.4.0-beta.1`:
   ```powershell
-  .\scripts\Tag-Release.ps1 -Version 1.4.0-beta.1 -Push
+  .\scr\Tag-Release.ps1 -Version 1.4.0-beta.1 -Push
   ```
 
 ## Do's and Don'ts
@@ -112,11 +112,11 @@ Creates release tags:
 
 | Scenario | Command |
 | --- | --- |
-| Check current version | `.\scripts\Get-Version.ps1` |
-| Breaking change release | `.\scripts\Tag-Release.ps1 -Version 2.0.0 -Push` |
-| New feature release | `.\scripts\Tag-Release.ps1 -Version 1.3.0 -Push` |
-| Bug fix / patch release | `.\scripts\Tag-Release.ps1 -Version 1.2.1 -Push` |
-| Preview/beta release | `.\scripts\Tag-Release.ps1 -Version 1.4.0-beta.1 -Push` |
+| Check current version | `.\scr\Get-Version.ps1` |
+| Breaking change release | `.\scr\Tag-Release.ps1 -Version 2.0.0 -Push` |
+| New feature release | `.\scr\Tag-Release.ps1 -Version 1.3.0 -Push` |
+| Bug fix / patch release | `.\scr\Tag-Release.ps1 -Version 1.2.1 -Push` |
+| Preview/beta release | `.\scr\Tag-Release.ps1 -Version 1.4.0-beta.1 -Push` |
 
 ## Relation to Other KoreForge Libraries
 
@@ -140,3 +140,5 @@ MinVer configuration in `Directory.Build.props`:
 This ensures:
 - `Version`, `PackageVersion`, `AssemblyVersion`, and `FileVersion` are all derived from Git tags
 - Consistent versioning across all packable projects in the solution
+
+
