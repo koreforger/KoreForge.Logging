@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <!--
     Multi-DLL Bundling Pattern: Explicit Analyzer Paths
     
@@ -28,8 +28,8 @@
   </ItemGroup>
   <!-- Analyzer project references for build-time code generation -->
   <ItemGroup>
-    <PackageReference Include="KoreForge.Logging.Generator" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
-    <PackageReference Include="KoreForge.Logging.Analyzers" VersionOverride="1.0.1-alpha" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <PackageReference Include="KoreForge.Logging.Generator" VersionOverride="1.1.2" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <PackageReference Include="KoreForge.Logging.Analyzers" VersionOverride="1.1.2" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
   <!-- Bundle analyzer/generator DLLs into the package.
        Note: Analyzers target netstandard2.0 (required by Roslyn) while Runtime targets net10.0,
