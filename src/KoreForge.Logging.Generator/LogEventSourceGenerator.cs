@@ -8,7 +8,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace KF.Logging.Generator;
+namespace KoreForge.Logging.Generator;
 
 /// <summary>
 /// Generates strongly-typed logging wrappers for enums annotated with <c>LogEventSourceAttribute</c>.
@@ -21,7 +21,7 @@ public sealed class LogEventSourceGenerator : IIncrementalGenerator
     {
         var enumModels = context.SyntaxProvider
             .ForAttributeWithMetadataName(
-                "KF.Logging.LogEventSourceAttribute",
+                "KoreForge.Logging.LogEventSourceAttribute",
                 static (node, _) => node is EnumDeclarationSyntax,
                 static (attributeContext, _) => CreateModel(attributeContext))
             .Where(static model => model is not null)!;
@@ -219,7 +219,7 @@ public sealed class LogEventSourceGenerator : IIncrementalGenerator
                     builder.AppendLine("_inner = inner ?? throw new global::System.ArgumentNullException(nameof(inner));");
                     foreach (var evt in area.Events)
                     {
-                        builder.AppendLine($"{evt.PropertyName} = new global::KF.Logging.Internal.EventLogger(_inner, (int){model.FullyQualifiedEnumName}.{evt.EnumMemberName}, \"{evt.EventPath}\");");
+                        builder.AppendLine($"{evt.PropertyName} = new global::KoreForge.Logging.Internal.EventLogger(_inner, (int){model.FullyQualifiedEnumName}.{evt.EnumMemberName}, \"{evt.EventPath}\");");
                     }
                     foreach (var group in area.Groups)
                     {
@@ -230,7 +230,7 @@ public sealed class LogEventSourceGenerator : IIncrementalGenerator
                 builder.AppendLine();
                 foreach (var evt in area.Events)
                 {
-                    builder.AppendLine($"public global::KF.Logging.IEventLogger {evt.PropertyName} {{ get; }}");
+                    builder.AppendLine($"public global::KoreForge.Logging.IEventLogger {evt.PropertyName} {{ get; }}");
                 }
                 foreach (var group in area.Groups)
                 {
@@ -250,7 +250,7 @@ public sealed class LogEventSourceGenerator : IIncrementalGenerator
                     builder.AppendLine("_inner = inner ?? throw new global::System.ArgumentNullException(nameof(inner));");
                     foreach (var evt in group.Events)
                     {
-                        builder.AppendLine($"{evt.PropertyName} = new global::KF.Logging.Internal.EventLogger(_inner, (int){model.FullyQualifiedEnumName}.{evt.EnumMemberName}, \"{evt.EventPath}\");");
+                        builder.AppendLine($"{evt.PropertyName} = new global::KoreForge.Logging.Internal.EventLogger(_inner, (int){model.FullyQualifiedEnumName}.{evt.EnumMemberName}, \"{evt.EventPath}\");");
                     }
                     foreach (var child in group.Children)
                     {
@@ -261,7 +261,7 @@ public sealed class LogEventSourceGenerator : IIncrementalGenerator
                 builder.AppendLine();
                 foreach (var evt in group.Events)
                 {
-                    builder.AppendLine($"public global::KF.Logging.IEventLogger {evt.PropertyName} {{ get; }}");
+                    builder.AppendLine($"public global::KoreForge.Logging.IEventLogger {evt.PropertyName} {{ get; }}");
                 }
                 foreach (var child in group.Children)
                 {

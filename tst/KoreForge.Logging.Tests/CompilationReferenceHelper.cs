@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 
-namespace KF.Logging.Tests;
+namespace KoreForge.Logging.Tests;
 
 internal static class CompilationReferenceHelper
 {

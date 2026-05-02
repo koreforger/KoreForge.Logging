@@ -1,6 +1,6 @@
 using System;
 
-namespace KF.Logging;
+namespace KoreForge.Logging;
 
 /// <summary>
 /// Marks an enum as a log event source, allowing the generator to build strongly typed loggers.

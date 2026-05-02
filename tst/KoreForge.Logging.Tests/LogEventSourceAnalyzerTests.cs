@@ -7,12 +7,12 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Xunit;
 using Xunit.Abstractions;
-using KF.Logging.Analyzers;
+using KoreForge.Logging.Analyzers;
 
-namespace KF.Logging.Tests;
+namespace KoreForge.Logging.Tests;
 
 /// <summary>
-/// Verifies analyzer diagnostics for <see cref="KF.Logging.LogEventSourceAttribute"/> scenarios.
+/// Verifies analyzer diagnostics for <see cref="KoreForge.Logging.LogEventSourceAttribute"/> scenarios.
 /// </summary>
 public sealed class LogEventSourceAnalyzerTests
 {
@@ -30,7 +30,7 @@ public sealed class LogEventSourceAnalyzerTests
     public async Task FlagsDuplicateAndInvalidValues()
     {
         var source = """
-using KF.Logging;
+using KoreForge.Logging;
 
 [LogEventSource]
 public enum LogEventIds
@@ -58,7 +58,7 @@ public enum LogEventIds
     public async Task FlagsAttributeOnNonEnum()
     {
         var source = """
-using KF.Logging;
+using KoreForge.Logging;
 
 [LogEventSource]
 public class BadLogger
@@ -73,14 +73,14 @@ public class BadLogger
     private static async Task<ImmutableArray<Diagnostic>> AnalyzeAsync(string source)
     {
         var syntaxTree = CSharpSyntaxTree.ParseText(source, new CSharpParseOptions(LanguageVersion.Preview));
-        var references = CompilationReferenceHelper.CreateReferences(typeof(KF.Logging.LogEventSourceAttribute));
+        var references = CompilationReferenceHelper.CreateReferences(typeof(KoreForge.Logging.LogEventSourceAttribute));
         var compilation = CSharpCompilation.Create(
             assemblyName: "AnalyzerTests",
             syntaxTrees: new[] { syntaxTree },
             references: references,
             options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-        Assert.NotNull(compilation.GetTypeByMetadataName("KF.Logging.LogEventSourceAttribute"));
+        Assert.NotNull(compilation.GetTypeByMetadataName("KoreForge.Logging.LogEventSourceAttribute"));
         var compileErrors = compilation.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error).ToArray();
         Assert.True(compileErrors.Length == 0, string.Join(" | ", compileErrors.Select(d => d.ToString())));
 

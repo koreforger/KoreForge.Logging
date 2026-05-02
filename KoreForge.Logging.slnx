@@ -5,11 +5,11 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/src/">
-    <Project Path="src/KF.Logging.Analyzers/KF.Logging.Analyzers.csproj" />
-    <Project Path="src/KF.Logging.Generator/KF.Logging.Generator.csproj" />
-    <Project Path="src/KF.Logging.Runtime/KF.Logging.Runtime.csproj" />
+    <Project Path="src/KoreForge.Logging.Analyzers/KoreForge.Logging.Analyzers.csproj" />
+    <Project Path="src/KoreForge.Logging.Generator/KoreForge.Logging.Generator.csproj" />
+    <Project Path="src/KoreForge.Logging.Runtime/KoreForge.Logging.Runtime.csproj" />
   </Folder>
   <Folder Name="/tst/">
-    <Project Path="tst/KF.Logging.Tests/KF.Logging.Tests.csproj" />
+    <Project Path="tst/KoreForge.Logging.Tests/KoreForge.Logging.Tests.csproj" />
   </Folder>
 </Solution>

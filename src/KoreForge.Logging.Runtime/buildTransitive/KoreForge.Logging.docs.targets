@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <KoreForgeLoggingDocsFolderName Condition="'$(KoreForgeLoggingDocsFolderName)' == ''">KoreForge.Logging</KoreForgeLoggingDocsFolderName>
+    <_KoreForgeLoggingDocsSource>$(MSBuildThisFileDirectory)..\docs\</_KoreForgeLoggingDocsSource>
+    <_KoreForgeLoggingDocsDestination Condition="'$(SolutionDir)' != '' and '$(SolutionDir)' != '*Undefined*'">$(SolutionDir)docs\$(KoreForgeLoggingDocsFolderName)\</_KoreForgeLoggingDocsDestination>
+    <_KoreForgeLoggingDocsDestination Condition="'$(SolutionDir)' == '' or '$(SolutionDir)' == '*Undefined*'">$(MSBuildProjectDirectory)\docs\$(KoreForgeLoggingDocsFolderName)\</_KoreForgeLoggingDocsDestination>
+  </PropertyGroup>
+
+  <Target Name="KoreForgeLoggingCopyDocs"
+          BeforeTargets="BeforeBuild"
+          Condition="Exists('$(_KoreForgeLoggingDocsSource)') and '$(_KoreForgeLoggingDocsDestination)' != '' and '$(KoreForgeLoggingDocsCopied)' != 'true'">
+    <ItemGroup>
+      <_KoreForgeLoggingDocFiles Include="$(_KoreForgeLoggingDocsSource)**\*.*" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(_KoreForgeLoggingDocsDestination)" />
+
+    <Copy SourceFiles="@(_KoreForgeLoggingDocFiles)"
+          DestinationFiles="@(_KoreForgeLoggingDocFiles->'$(_KoreForgeLoggingDocsDestination)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+
+    <PropertyGroup>
+      <KoreForgeLoggingDocsCopied>true</KoreForgeLoggingDocsCopied>
+    </PropertyGroup>
+  </Target>
+</Project>

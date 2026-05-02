@@ -1,14 +1,14 @@
 using System.Collections.Immutable;
-using KF.Logging.Generator;
+using KoreForge.Logging.Generator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace KF.Logging.Tests;
+namespace KoreForge.Logging.Tests;
 
 /// <summary>
-/// Validates code emitted by <see cref="KF.Logging.Generator.LogEventSourceGenerator"/>.
+/// Validates code emitted by <see cref="KoreForge.Logging.Generator.LogEventSourceGenerator"/>.
 /// </summary>
 public sealed class LogEventSourceGeneratorTests
 {
@@ -19,7 +19,7 @@ public sealed class LogEventSourceGeneratorTests
     public void GeneratesExpectedTypes()
     {
         var source = """
-using KF.Logging;
+using KoreForge.Logging;
 
 namespace MyApp.Logging;
 

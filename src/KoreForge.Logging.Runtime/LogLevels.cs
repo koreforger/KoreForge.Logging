@@ -1,6 +1,6 @@
 using System;
 
-namespace KF.Logging;
+namespace KoreForge.Logging;
 
 /// <summary>
 /// Flags enum describing which log level methods the generator should emit.

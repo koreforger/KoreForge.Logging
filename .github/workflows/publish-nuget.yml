@@ -32,7 +32,7 @@ jobs:
         run: dotnet test KoreForge.Logging.slnx -c Release --no-build
 
       - name: Pack
-        run: dotnet pack src/KF.Logging.Runtime/KF.Logging.Runtime.csproj -c Release --no-build -o artifacts/
+        run: dotnet pack src/KoreForge.Logging.Runtime/KoreForge.Logging.Runtime.csproj -c Release --no-build -o artifacts/
 
       - name: Push to NuGet.org
         run: |

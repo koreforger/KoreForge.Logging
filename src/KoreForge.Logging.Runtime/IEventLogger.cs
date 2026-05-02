@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace KF.Logging;
+namespace KoreForge.Logging;
 
 /// <summary>
 /// Strongly typed logging surface produced for each generated enumeration value.

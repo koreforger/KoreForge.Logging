@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using KF.Logging.Internal;
+using KoreForge.Logging.Internal;
 using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace KF.Logging.Tests;
+namespace KoreForge.Logging.Tests;
 
 /// <summary>
-/// Verifies behavior of the runtime <see cref="KF.Logging.Internal.EventLogger"/>.
+/// Verifies behavior of the runtime <see cref="KoreForge.Logging.Internal.EventLogger"/>.
 /// </summary>
 public sealed class EventLoggerTests
 {

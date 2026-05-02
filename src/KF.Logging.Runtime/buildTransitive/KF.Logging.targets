@@ -1,3 +1,0 @@
-<Project>
-  <Import Project="KF.Logging.docs.targets" Condition="Exists('$(MSBuildThisFileDirectory)KF.Logging.docs.targets')" />
-</Project>

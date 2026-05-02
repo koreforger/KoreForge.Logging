@@ -6,7 +6,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace KF.Logging.Analyzers;
+namespace KoreForge.Logging.Analyzers;
 
 /// <summary>
 /// Validates enums annotated with <c>LogEventSourceAttribute</c> to ensure best practices.
@@ -31,8 +31,8 @@ public sealed class LogEventSourceAnalyzer : DiagnosticAnalyzer
 
         context.RegisterCompilationStartAction(static compilationContext =>
         {
-            const string attributeMetadataName = "KF.Logging.LogEventSourceAttribute";
-            const string attributeDisplayName = "global::KF.Logging.LogEventSourceAttribute";
+            const string attributeMetadataName = "KoreForge.Logging.LogEventSourceAttribute";
+            const string attributeDisplayName = "global::KoreForge.Logging.LogEventSourceAttribute";
             var attributeSymbol = compilationContext.Compilation.GetTypeByMetadataName(attributeMetadataName);
             if (attributeSymbol is null)
             {

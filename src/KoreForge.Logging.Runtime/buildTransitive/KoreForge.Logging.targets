@@ -1,0 +1,3 @@
+<Project>
+  <Import Project="KoreForge.Logging.docs.targets" Condition="Exists('$(MSBuildThisFileDirectory)KoreForge.Logging.docs.targets')" />
+</Project>

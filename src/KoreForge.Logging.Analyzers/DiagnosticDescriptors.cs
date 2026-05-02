@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace KF.Logging.Analyzers;
+namespace KoreForge.Logging.Analyzers;
 
 internal static class DiagnosticDescriptors
 {
